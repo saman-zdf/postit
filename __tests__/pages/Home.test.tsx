@@ -5,6 +5,8 @@ import "@testing-library/jest-dom";
 
 describe("Home Page", () => {
   it("Should display Hello Next", () => {
-    expect(true).toBe(true);
+    render(<Home />);
+    const header = screen.getByRole("heading");
+    expect(header).toHaveTextContent("Hello Next");
   });
 });
