@@ -7,7 +7,7 @@ const adapter = PrismaAdapter(client);
 
 export const authOptions = {
   // Configure adapter
-  adapter: PrismaAdapter(client),
+  adapter,
   secret: process.env.AUTH_SECRET,
   // Configure one or more authentication providers
   providers: [
@@ -16,7 +16,8 @@ export const authOptions = {
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       httpOptions: {
-        timeout: 40000,
+        // Need to add big timeout as in development mode it will take time for
+        timeout: 60000,
       },
     }),
   ],
